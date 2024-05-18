@@ -1,29 +1,36 @@
-import type { PropsWithChildren, ReactElement } from 'react';
-import { StyleSheet, useColorScheme } from 'react-native';
+import type { PropsWithChildren, ReactElement } from "react";
 import Animated, {
   interpolate,
   useAnimatedRef,
   useAnimatedStyle,
   useScrollViewOffset,
-} from 'react-native-reanimated';
+} from "react-native-reanimated";
 
-import { ThemedView } from '@/components/ThemedView';
-
-const HEADER_HEIGHT = 250;
+import { View } from "@/components/ThemedView";
+import { Colors } from "@/constants/Colors";
+import Sizes from "@/constants/Sizes";
+import { useThemeColor } from "@/hooks/useThemeColor";
+import { ImageBackground } from "expo-image";
+import { ScaledSheet } from "react-native-size-matters";
 
 type Props = PropsWithChildren<{
-  headerImage: ReactElement;
-  headerBackgroundColor: { dark: string; light: string };
+  HeaderImage?: ReactElement;
+  headerHeight?: number | string;
+  HeaderContent?: ReactElement;
+  headerBackgroundColor?: keyof typeof Colors.light & keyof typeof Colors.dark;
 }>;
 
-export default function ParallaxScrollView({
+export default ({
   children,
-  headerImage,
+  HeaderImage,
+  headerHeight,
+  HeaderContent,
   headerBackgroundColor,
-}: Props) {
-  const colorScheme = useColorScheme() ?? 'light';
+}: Props) => {
+  const colors = useThemeColor();
   const scrollRef = useAnimatedRef<Animated.ScrollView>();
   const scrollOffset = useScrollViewOffset(scrollRef);
+  const HEADER_HEIGHT = (headerHeight as number) || Sizes.parallaxHeaderHeight;
 
   const headerAnimatedStyle = useAnimatedStyle(() => {
     return {
@@ -36,41 +43,63 @@ export default function ParallaxScrollView({
           ),
         },
         {
-          scale: interpolate(scrollOffset.value, [-HEADER_HEIGHT, 0, HEADER_HEIGHT], [2, 1, 1]),
+          scale: interpolate(
+            scrollOffset.value,
+            [-HEADER_HEIGHT, 0, HEADER_HEIGHT],
+            [2, 1, 1]
+          ),
         },
       ],
     };
   });
 
   return (
-    <ThemedView style={styles.container}>
+    <View style={styles.container}>
       <Animated.ScrollView ref={scrollRef} scrollEventThrottle={16}>
         <Animated.View
           style={[
             styles.header,
-            { backgroundColor: headerBackgroundColor[colorScheme] },
+            {
+              height: HEADER_HEIGHT,
+              backgroundColor: headerBackgroundColor || colors.primary,
+            },
             headerAnimatedStyle,
-          ]}>
-          {headerImage}
+          ]}
+        >
+          {HeaderImage || (
+            <ImageBackground
+              cachePolicy={"memory-disk"}
+              source={require("@/assets/images/parallax-header-bg.png")}
+              style={styles.parallaxHeaderBg}
+            >
+              {HeaderContent}
+            </ImageBackground>
+          )}
         </Animated.View>
-        <ThemedView style={styles.content}>{children}</ThemedView>
+        <View style={styles.content}>{children}</View>
       </Animated.ScrollView>
-    </ThemedView>
+    </View>
   );
-}
+};
 
-const styles = StyleSheet.create({
+const styles = ScaledSheet.create({
   container: {
-    flex: 1,
+    flex: "1@s",
   },
   header: {
-    height: 250,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   content: {
-    flex: 1,
-    padding: 32,
-    gap: 16,
-    overflow: 'hidden',
+    flex: "1@s",
+    padding: "32@s",
+    gap: "16@s",
+    overflow: "hidden",
+  },
+  parallaxHeaderBg: {
+    height: "100%",
+    width: "100%",
+    bottom: 0,
+    left: 0,
+    position: "absolute",
   },
 });
