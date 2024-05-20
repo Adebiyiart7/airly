@@ -11,8 +11,3 @@ declare module "*.jpg" {
 type SVGComponent = React.FunctionComponent<
   React.SVGProps<SVGSVGElement> & { title?: string; onPress?: () => void }
 >;
-
-declare module "*.svg" {
-  const ReactComponent: SVGComponent;
-  export default ReactComponent;
-}
