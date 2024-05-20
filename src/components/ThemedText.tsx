@@ -35,12 +35,12 @@ export const Text = ({
 
 const styles = ScaledSheet.create({
   default: {
-    lineHeight: "24@s",
+    lineHeight: "20@s",
     fontFamily: "Regular",
   },
 
   link: {
-    lineHeight: "30@s",
     color: "#0a7ea4",
+    fontFamily: "Regular",
   },
 });

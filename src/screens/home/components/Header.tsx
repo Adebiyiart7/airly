@@ -42,7 +42,7 @@ const styles = ScaledSheet.create({
     bottom: 0,
     left: 0,
     position: "absolute",
-    paddingTop: scale(Constants.statusBarHeight + 4),
+    paddingTop: scale(Constants.statusBarHeight + 8),
     paddingHorizontal: scale(Sizes.wall),
   },
 });
