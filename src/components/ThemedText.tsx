@@ -1,27 +1,29 @@
+import { useThemeColor } from "@/src/hooks/useThemeColor";
 import { Text as _Text, type TextProps } from "react-native";
-
-import { useThemeColor } from "@/hooks/useThemeColor";
 import { ScaledSheet } from "react-native-size-matters";
 
 export type ThemedTextProps = TextProps & {
   lightColor?: string;
   darkColor?: string;
   type?: "default" | "link";
+  size?: number | `${number}`;
 };
 
 export const Text = ({
   style,
   lightColor,
   darkColor,
+  size,
   type = "default",
   ...rest
 }: ThemedTextProps) => {
+  const SIZE: number = (size as number) || 14;
   const colors = useThemeColor();
 
   return (
     <_Text
       style={[
-        { color: colors.text },
+        { color: colors.text, fontSize: SIZE },
         type === "default" ? styles.default : undefined,
         type === "link" ? styles.link : undefined,
         style,
@@ -33,14 +35,12 @@ export const Text = ({
 
 const styles = ScaledSheet.create({
   default: {
-    fontSize: "16@s",
     lineHeight: "24@s",
     fontFamily: "Regular",
   },
 
   link: {
     lineHeight: "30@s",
-    fontSize: "16@s",
     color: "#0a7ea4",
   },
 });

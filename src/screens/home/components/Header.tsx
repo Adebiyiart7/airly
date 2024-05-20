@@ -1,12 +1,12 @@
-import { Text } from "@/components/ThemedText";
+import { Text } from "@/src/components/ThemedText";
 import { ImageBackground } from "expo-image";
 import React from "react";
 import { Dimensions, View, ViewStyle } from "react-native";
 import { ScaledSheet, scale } from "react-native-size-matters";
 import AccountCard from "./AccountCard";
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { useThemeColor } from "@/src/hooks/useThemeColor";
 import Constants from "expo-constants";
-import Sizes from "@/constants/Sizes";
+import Sizes from "@/src/constants/Sizes";
 
 const { height } = Dimensions.get("window");
 
@@ -21,7 +21,7 @@ const Header = () => {
     <View style={[containerStyles, styles.container]}>
       <ImageBackground
         cachePolicy={"memory-disk"}
-        source={require("@/assets/images/parallax-header-bg.png")}
+        source={require("@/src/assets/images/parallax-header-bg.png")}
         style={styles.headerBg}
       >
         <AccountCard />

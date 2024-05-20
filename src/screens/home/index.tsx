@@ -1,4 +1,4 @@
-import Sizes from "@/constants/Sizes";
+import Sizes from "@/src/constants/Sizes";
 import React from "react";
 import { View } from "react-native";
 import { ScaledSheet } from "react-native-size-matters";

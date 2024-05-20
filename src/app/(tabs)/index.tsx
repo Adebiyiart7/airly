@@ -1,4 +1,4 @@
-import HomeScreenComponent from "@/screens/home";
+import HomeScreenComponent from "@/src/screens/home";
 import { ScrollView } from "react-native";
 
 export default () => {

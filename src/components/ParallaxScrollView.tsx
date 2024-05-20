@@ -6,10 +6,10 @@ import Animated, {
   useScrollViewOffset,
 } from "react-native-reanimated";
 
-import { View } from "@/components/ThemedView";
-import { Colors } from "@/constants/Colors";
-import Sizes from "@/constants/Sizes";
-import { useThemeColor } from "@/hooks/useThemeColor";
+import { View } from "@/src/components/ThemedView";
+import { Colors } from "@/src/constants/Colors";
+import Sizes from "@/src/constants/Sizes";
+import { useThemeColor } from "@/src/hooks/useThemeColor";
 import { ImageBackground } from "expo-image";
 import { ScaledSheet } from "react-native-size-matters";
 
@@ -69,7 +69,7 @@ export default ({
           {HeaderImage || (
             <ImageBackground
               cachePolicy={"memory-disk"}
-              source={require("@/assets/images/parallax-header-bg.png")}
+              source={require("@/src/assets/images/parallax-header-bg.png")}
               style={styles.parallaxHeaderBg}
             >
               {HeaderContent}

@@ -1,10 +1,9 @@
-import Ionicons from "@expo/vector-icons/Ionicons";
-import { StyleSheet, Image, Platform } from "react-native";
+import { Image, Platform, StyleSheet } from "react-native";
 
-import { Collapsible } from "@/components/Collapsible";
-import ParallaxScrollView from "@/components/ParallaxScrollView";
-import { Text } from "@/components/ThemedText";
-import { View } from "@/components/ThemedView";
+import { Collapsible } from "@/src/components/Collapsible";
+import ParallaxScrollView from "@/src/components/ParallaxScrollView";
+import { Text } from "@/src/components/ThemedText";
+import { View } from "@/src/components/ThemedView";
 
 export default function TabTwoScreen() {
   return (
@@ -40,7 +39,7 @@ export default function TabTwoScreen() {
           different screen densities
         </Text>
         <Image
-          source={require("@/assets/images/react-logo.png")}
+          source={require("@/src/assets/images/react-logo.png")}
           style={{ alignSelf: "center" }}
         />
       </Collapsible>

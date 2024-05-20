@@ -2,9 +2,9 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 import { PropsWithChildren, useState } from "react";
 import { StyleSheet, TouchableOpacity, useColorScheme } from "react-native";
 
-import { Text } from "@/components/ThemedText";
-import { View } from "@/components/ThemedView";
-import { Colors } from "@/constants/Colors";
+import { Text } from "@/src/components/ThemedText";
+import { View } from "@/src/components/ThemedView";
+import { Colors } from "@/src/constants/Colors";
 
 export function Collapsible({
   children,
