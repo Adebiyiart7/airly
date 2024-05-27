@@ -13,6 +13,7 @@ import "../locales/i18n";
 
 import { useColorScheme } from "@/src/hooks/useColorScheme";
 import i18n from "../locales/i18n";
+import { Fonts } from "../constants/Fonts";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -22,12 +23,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    Regular: require("../assets/fonts/urbanist/Urbanist-Regular.ttf"),
-    Medium: require("../assets/fonts/urbanist/Urbanist-Medium.ttf"),
-    SemiBold: require("../assets/fonts/urbanist/Urbanist-SemiBold.ttf"),
-    Bold: require("../assets/fonts/urbanist/Urbanist-Bold.ttf"),
-  });
+  const [loaded] = useFonts(Fonts);
 
   useEffect(() => {
     if (loaded) {

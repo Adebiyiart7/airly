@@ -8,19 +8,19 @@ const primaryDark = "#235DFF";
 
 export const Colors = {
   light: {
-    text: "#11181C",
-    background: "#fff",
-    primary: primaryLight,
+    background: "#F5F5F5",
+    background2: "#FFFFFF",
+    border: "#EEEEEE",
     icon: "#687076",
-    tabIconDefault: "#687076",
-    tabIconSelected: primaryLight,
+    primary: primaryLight,
+    text: "#11181C",
   },
   dark: {
     text: "#ECEDEE",
-    background: "#151718",
-    primary: primaryDark,
+    background: "#181A20",
+    background2: "#1F222A",
+    border: "#35383F",
     icon: "#9BA1A6",
-    tabIconDefault: "#9BA1A6",
-    tabIconSelected: primaryDark,
+    primary: primaryDark,
   },
 };

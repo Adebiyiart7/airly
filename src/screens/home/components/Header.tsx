@@ -1,12 +1,11 @@
-import { Text } from "@/src/components/ThemedText";
+import Sizes from "@/src/constants/Sizes";
+import { useThemeColor } from "@/src/hooks/useThemeColor";
+import Constants from "expo-constants";
 import { ImageBackground } from "expo-image";
 import React from "react";
 import { Dimensions, View, ViewStyle } from "react-native";
 import { ScaledSheet, scale } from "react-native-size-matters";
 import AccountCard from "./AccountCard";
-import { useThemeColor } from "@/src/hooks/useThemeColor";
-import Constants from "expo-constants";
-import Sizes from "@/src/constants/Sizes";
 
 const { height } = Dimensions.get("window");
 
