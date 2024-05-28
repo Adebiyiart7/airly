@@ -20,7 +20,12 @@ const Chip = React.memo(({ active, label, onPress }: Props) => {
 
   return (
     <Pressable onPress={onPress} style={[styles.wrapper, wrapperStyles]}>
-      <Text font="Medium">{label}</Text>
+      <Text
+        font="Medium"
+        style={{ color: active ? colors.white : colors.text }}
+      >
+        {label}
+      </Text>
     </Pressable>
   );
 });
@@ -33,7 +38,7 @@ const styles = ScaledSheet.create({
     borderWidth: "1@s",
     borderRadius: "25@s",
     paddingHorizontal: "10@s",
-    height: "35@s",
+    height: "36@s",
     justifyContent: "center",
     alignItems: "center",
   },

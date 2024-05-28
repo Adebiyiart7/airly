@@ -14,6 +14,8 @@ export const Colors = {
     icon: "#687076",
     primary: primaryLight,
     text: "#11181C",
+    mediumText: "#6e6969",
+    white: "#FFF",
   },
   dark: {
     text: "#ECEDEE",
@@ -22,5 +24,7 @@ export const Colors = {
     border: "#35383F",
     icon: "#9BA1A6",
     primary: primaryDark,
+    mediumText: "rgb(185, 175, 165)",
+    white: "#FFF",
   },
 };

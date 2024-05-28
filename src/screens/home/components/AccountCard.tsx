@@ -6,16 +6,25 @@ import React from "react";
 import { Dimensions, View } from "react-native";
 import { ScaledSheet } from "react-native-size-matters";
 import Notification from "@/src/assets/icons/notification.svg";
+import { useThemeColor } from "@/src/hooks/useThemeColor";
 const { width } = Dimensions.get("window");
 
 const AccountCard = () => {
+  const colors = useThemeColor();
+
   return (
     <View style={commonStyles.flexRowFull}>
       <View style={[commonStyles.flexRow, styles.left]}>
         <Image source={avatar} style={styles.avatar} />
         <View style={{ gap: 2 }}>
-          <Text numberOfLines={1}>{t("Good morning!")} 🌤</Text>
-          <Text numberOfLines={1} size={18} style={styles.name}>
+          <Text numberOfLines={1} style={{ color: colors.white }}>
+            {t("Good morning!")} 🌤
+          </Text>
+          <Text
+            numberOfLines={1}
+            size={18}
+            style={[styles.name, { color: colors.white }]}
+          >
             Adeeyo Joseph Adebiyi
           </Text>
         </View>

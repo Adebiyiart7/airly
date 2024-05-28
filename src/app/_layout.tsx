@@ -14,6 +14,7 @@ import "../locales/i18n";
 import { useColorScheme } from "@/src/hooks/useColorScheme";
 import i18n from "../locales/i18n";
 import { Fonts } from "../constants/Fonts";
+import { StatusBar } from "expo-status-bar";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -41,6 +42,7 @@ export default function RootLayout() {
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
+      <StatusBar style={"light"} />
     </ThemeProvider>
   );
 }
