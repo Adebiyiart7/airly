@@ -12,9 +12,9 @@ import "react-native-reanimated";
 import "../locales/i18n";
 
 import { useColorScheme } from "@/src/hooks/useColorScheme";
-import i18n from "../locales/i18n";
-import { Fonts } from "../constants/Fonts";
 import { StatusBar } from "expo-status-bar";
+import { Fonts } from "../constants/Fonts";
+import i18n from "../locales/i18n";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
