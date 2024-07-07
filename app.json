@@ -19,7 +19,9 @@
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.adebiyiart.airly",
+      "googleServicesFile": "./google-services.json"
     },
     "web": {
       "bundler": "metro",
@@ -29,6 +31,15 @@
     "plugins": ["expo-router", "expo-localization"],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "c6c9600e-42ce-47d7-aa9d-7fbc868030e2"
+      }
+    },
+    "owner": "adebiyiart"
   }
 }

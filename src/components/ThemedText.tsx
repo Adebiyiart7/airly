@@ -7,6 +7,7 @@ export type ThemedTextProps = TextProps & {
   lightColor?: string;
   darkColor?: string;
   font?: AppFonts;
+  color?: string;
   type?: "default" | "link";
   size?: number | `${number}`;
 };
@@ -17,6 +18,7 @@ export const Text = ({
   darkColor,
   size,
   font,
+  color,
   type = "default",
   ...rest
 }: ThemedTextProps) => {
@@ -29,7 +31,7 @@ export const Text = ({
       style={[
         type === "default" ? styles.default : undefined,
         type === "link" ? styles.link : undefined,
-        { color: colors.text, fontSize: SIZE, fontFamily: font },
+        { color: color || colors.text, fontSize: SIZE, fontFamily: font },
         style,
       ]}
       {...rest}

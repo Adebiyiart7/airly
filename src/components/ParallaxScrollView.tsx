@@ -8,10 +8,12 @@ import Animated, {
 
 import { View } from "@/src/components/ThemedView";
 import { Colors } from "@/src/constants/Colors";
-import Sizes from "@/src/constants/Sizes";
+import Sizes, { TAB_BAR_HEIGHT } from "@/src/constants/Sizes";
 import { useThemeColor } from "@/src/hooks/useThemeColor";
 import { ImageBackground } from "expo-image";
 import { ScaledSheet } from "react-native-size-matters";
+import { Text } from "./ThemedText";
+import { Dimensions, ScrollView } from "react-native";
 
 type Props = PropsWithChildren<{
   HeaderImage?: ReactElement;
@@ -55,7 +57,12 @@ export default ({
 
   return (
     <View style={styles.container}>
-      <Animated.ScrollView ref={scrollRef} scrollEventThrottle={16}>
+      <Animated.ScrollView
+        bounces={false}
+        ref={scrollRef}
+        scrollEnabled={false}
+        scrollEventThrottle={16}
+      >
         <Animated.View
           style={[
             styles.header,
@@ -76,7 +83,19 @@ export default ({
             </ImageBackground>
           )}
         </Animated.View>
-        <View style={styles.content}>{children}</View>
+        <ScrollView
+          style={[
+            styles.content,
+            {
+              height:
+                Dimensions.get("window").height -
+                HEADER_HEIGHT -
+                TAB_BAR_HEIGHT,
+            },
+          ]}
+        >
+          {children}
+        </ScrollView>
       </Animated.ScrollView>
     </View>
   );
@@ -84,16 +103,14 @@ export default ({
 
 const styles = ScaledSheet.create({
   container: {
-    flex: "1@s",
+    flex: 1,
   },
   header: {
     overflow: "hidden",
   },
   content: {
-    flex: "1@s",
-    padding: "32@s",
-    gap: "16@s",
-    overflow: "hidden",
+    flex: 1,
+    paddingHorizontal: Sizes.wall,
   },
   parallaxHeaderBg: {
     height: "100%",

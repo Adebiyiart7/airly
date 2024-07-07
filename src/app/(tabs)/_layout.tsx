@@ -4,6 +4,7 @@ import React from "react";
 import { TabBarIcon } from "@/src/components/navigation/TabBarIcon";
 import { Colors } from "@/src/constants/Colors";
 import { useColorScheme } from "@/src/hooks/useColorScheme";
+import { TAB_BAR_HEIGHT } from "@/src/constants/Sizes";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -13,6 +14,10 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].primary,
         headerShown: false,
+        tabBarStyle: {
+          height: TAB_BAR_HEIGHT,
+          paddingTop: 8,
+        },
       }}
     >
       <Tabs.Screen
@@ -28,35 +33,50 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="saved"
         options={{
-          title: "Explore",
+          title: "Saved",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
-              name={focused ? "code-slash" : "code-slash-outline"}
+              name={focused ? "bookmark" : "bookmark-outline"}
               color={color}
             />
           ),
         }}
       />
       <Tabs.Screen
-        name="one"
+        name="booking"
         options={{
-          title: "One",
+          title: "Bookings",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
-              name={focused ? "remove" : "remove-circle"}
+              name={focused ? "airplane" : "airplane"}
               color={color}
             />
           ),
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="wallet"
         options={{
-          title: "Explore",
+          title: "Wallet",
           tabBarIcon: ({ color, focused }) => (
-            <TabBarIcon name={focused ? "add" : "add-circle"} color={color} />
+            <TabBarIcon
+              name={focused ? "wallet" : "wallet-outline"}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="account"
+        options={{
+          title: "Account",
+          tabBarIcon: ({ color, focused }) => (
+            <TabBarIcon
+              name={focused ? "account" : "account-outline"}
+              color={color}
+            />
           ),
         }}
       />

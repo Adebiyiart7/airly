@@ -96,7 +96,7 @@ const styles = ScaledSheet.create({
   },
   container: {
     borderRadius: "12@s",
-    gap: "18@s",
+    gap: "20@s",
     padding: scale(Sizes.wall),
   },
 });

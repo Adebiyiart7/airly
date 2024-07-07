@@ -7,9 +7,12 @@ import { Dimensions, View } from "react-native";
 import { ScaledSheet, scale } from "react-native-size-matters";
 import FlightForm from "./components/FlightForm";
 import Header from "./components/Header";
+import { useThemeColor } from "@/src/hooks/useThemeColor";
 
 const { height } = Dimensions.get("window");
 const HomeScreenComponent = () => {
+  const colors = useThemeColor();
+
   return (
     <ScreenWrapper scrollEnabled={false}>
       <View style={{ height }}>
@@ -18,7 +21,11 @@ const HomeScreenComponent = () => {
         </View>
         <View style={styles.container}>
           <FlightForm />
-          <Text>Special Offer</Text>
+          <View style={styles.specialOfferTextWrapper}>
+            <Text color={colors.primary} font="SemiBold" size={scale(15)}>
+              {t("View Special Offer")}
+            </Text>
+          </View>
         </View>
       </View>
     </ScreenWrapper>
@@ -35,5 +42,9 @@ const styles = ScaledSheet.create({
     top: scale(Constants.statusBarHeight + 76),
     bottom: "20@s",
     paddingHorizontal: scale(Sizes.wall),
+  },
+  specialOfferTextWrapper: {
+    alignItems: "center",
+    marginTop: "20@s",
   },
 });
